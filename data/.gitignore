@@ -1,2 +1,5 @@
 # local csv files (for now)
 /*.csv
+
+# and sqlite3 files too
+/*.db
