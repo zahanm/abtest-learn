@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 import os.path
 from random import randint
 
+import names
+
 DATA_DIR = '../data'
 FIELDNAMES = [
   'timestamp',
@@ -34,6 +36,7 @@ class Simulator:
     self.logger.writerow({
       'timestamp': self.current_time,
       'uid': 0,
+      'name': names.makeupone(),
     })
 
 if __name__ == '__main__':
