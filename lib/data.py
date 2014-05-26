@@ -1,7 +1,7 @@
 
 from datetime import datetime, timedelta
 import os.path
-from random import randint
+from random import randint, choice
 import sqlite3
 
 import names
@@ -13,11 +13,12 @@ DB_FILE = 'site.db'
 
 def run():
   conn = sqlite3.connect(os.path.join(DATA_DIR, DB_FILE))
-  p = People(conn)
-  p.filltable()
-  # s = Simulator(conn)
-  # for i in range(NUMBER_OF_HITS):
-  #   s.serverhit()
+  # p = People(conn)
+  # p.filltable()
+  s = Simulator(conn)
+  for i in range(NUMBER_OF_HITS):
+    s.serverhit()
+  s.flushlogs()
 
 class Simulator:
   """
@@ -29,15 +30,23 @@ class Simulator:
     self.current_time = datetime.now() - timedelta(days=5)
     self.db = db
     with self.db:
+      self.db.execute('drop table logs')
       self.db.execute('create table logs (ts timestamp, uid integer, name text)')
+      self.people = list(self.db.execute('select uid, name from people'))
+    assert NUM_PEOPLE == len(self.people)
+    self.transactions = []
 
   def serverhit(self):
     secs_elapsed = randint(0, 10)
     self.current_time += timedelta(seconds=secs_elapsed)
-    uid = 0
-    name = names.makeupone()
+    person = choice(self.people)
+    uid = person[0]
+    name = person[1]
+    self.transactions.append((self.current_time, uid, name))
+
+  def flushlogs(self):
     with self.db:
-      self.db.execute('insert into logs values (?,?,?)', (self.current_time, uid, name))
+      self.db.executemany('insert into logs values (?,?,?)', self.transactions)
 
 class People:
 
