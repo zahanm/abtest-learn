@@ -1,2 +1,5 @@
 # IDEA settings
 /.idea/
+
+# iPython notebook data
+/.ipynb_checkpoints/
