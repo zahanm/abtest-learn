@@ -1,32 +1,28 @@
 
 from random import choice
 
-FIRST_NAMES = {
-  'male': [
-    'James',
-    'John',
-    'Robert',
-    'Michael',
-    'William',
-    'David',
-    'Richard',
-    'Charles',
-    'Joseph',
-    'Thomas',
-  ],
-  'female': [
-    'Mary',
-    'Patricia',
-    'Linda',
-    'Barbara',
-    'Elizabeth',
-    'Jennifer',
-    'Maria',
-    'Susan',
-    'Margaret',
-    'Dorothy',
-  ],
-}
+FIRST_NAMES = [
+  'James',
+  'John',
+  'Robert',
+  'Michael',
+  'William',
+  'David',
+  'Richard',
+  'Charles',
+  'Joseph',
+  'Thomas',
+  'Mary',
+  'Patricia',
+  'Linda',
+  'Barbara',
+  'Elizabeth',
+  'Jennifer',
+  'Maria',
+  'Susan',
+  'Margaret',
+  'Dorothy',
+]
 
 LAST_NAMES = [
   'Smith',
@@ -56,13 +52,8 @@ LAST_NAMES = [
   'Clark',
 ]
 
-
-def makeupone(gender=None) -> str:
-  if gender:
-    assert gender == 'male' or gender == 'female'
-  else:
-    gender = choice(['male', 'female'])
-  return choice(FIRST_NAMES[gender]) + ' ' + choice(LAST_NAMES)
+def makeupone() -> str:
+  return choice(FIRST_NAMES) + ' ' + choice(LAST_NAMES)
 
 if __name__ == '__main__':
-  print(makeupone(choice(['male', 'female'])))
+  print(makeupone())

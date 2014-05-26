@@ -6,15 +6,18 @@ import sqlite3
 
 import names
 
+NUM_PEOPLE = 100
 NUMBER_OF_HITS = 20
 DATA_DIR = '../data'
 DB_FILE = 'site.db'
 
 def run():
   conn = sqlite3.connect(os.path.join(DATA_DIR, DB_FILE))
-  s = Simulator(conn)
-  for i in range(NUMBER_OF_HITS):
-    s.serverhit()
+  p = People(conn)
+  p.filltable()
+  # s = Simulator(conn)
+  # for i in range(NUMBER_OF_HITS):
+  #   s.serverhit()
 
 class Simulator:
   """
@@ -35,6 +38,21 @@ class Simulator:
     name = names.makeupone()
     with self.db:
       self.db.execute('insert into logs values (?,?,?)', (self.current_time, uid, name))
+
+class People:
+
+  def __init__(self, db):
+    self.db = db
+    with self.db:
+      self.db.execute('create table people (uid integer primary key, name text)')
+
+  def filltable(self):
+    peeps = map(
+      lambda ii: (ii, names.makeupone()),
+      range(1, NUM_PEOPLE + 1)
+    )
+    with self.db:
+      self.db.executemany('insert into people values (?, ?)', peeps)
 
 if __name__ == '__main__':
   run()
