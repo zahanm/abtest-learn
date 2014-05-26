@@ -45,7 +45,11 @@ This is a pretty simple test, let's make the status update button bigger. We wan
 
 This gets a 2% bump overall in people sharing updates, metric A. Metric C, on the other hand, goes down by 2% because we had to make the photo upload button smaller. Metric B is unaffected.
 
+This test is on for UIDs between 10% and 30% of the whole space (so that there is some overlap with Test 1).
+
 ## Analysis
+
+First, we have to figure out who actually saw each group treatment.
 
 Number of conversion events per person, per exposure
 
