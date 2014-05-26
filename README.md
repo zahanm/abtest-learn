@@ -11,3 +11,8 @@ conversion events to log.
 - Choose a user
 - Choose which test groups (s)he will land in
 - Choose some conversion events to occur just then - with probabilities
+## Analysis
+
+### Metrics
+
+Number of conversion events per person, per exposure
