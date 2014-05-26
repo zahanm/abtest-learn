@@ -1,2 +1,5 @@
 # globals
 *.pyc
+
+# mac specific
+.DS_Store
