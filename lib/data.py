@@ -6,6 +6,7 @@ from random import randint
 
 import names
 
+NUMBER_OF_HITS = 20
 DATA_DIR = '../data'
 FIELDNAMES = [
   'timestamp',
@@ -13,12 +14,13 @@ FIELDNAMES = [
   'name',
 ]
 
-def testFile():
-  fieldnames = ['name', 'age']
+def run():
   with open(os.path.join(DATA_DIR, 'logs.csv'), 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames)
+    writer = csv.DictWriter(f, FIELDNAMES)
     writer.writeheader()
-    writer.writerow({ 'name': 'Zahan', 'age': 23 })
+    s = Simulator(writer)
+    for i in range(NUMBER_OF_HITS):
+      s.serverhit()
 
 class Simulator:
   """
@@ -40,4 +42,4 @@ class Simulator:
     })
 
 if __name__ == '__main__':
-  testFile()
+  run()
