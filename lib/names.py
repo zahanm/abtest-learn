@@ -56,7 +56,8 @@ LAST_NAMES = [
   'Clark',
 ]
 
-def makeupone(gender=None):
+
+def makeupone(gender=None) -> str:
   if gender:
     assert gender == 'male' or gender == 'female'
   else:
