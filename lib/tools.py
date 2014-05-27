@@ -23,7 +23,7 @@ class Analysis:
       res = self.db.execute('select count(*) from conversions').fetchone()
       return res[0]
 
-  def raw_names_ages_gender(self, limit: int):
+  def raw_names_ages_gender(self, limit):
     with self.db:
       res = self.db.execute(
         'select name, age, gender from people limit ?',
@@ -53,7 +53,7 @@ class Analysis:
       res = self.db.execute('select uid, count(*) from conversions group by uid')
       return np.array(list(res), np.int)
 
-  def raw_metrics_for_test(self, test1: bool, test2: bool):
+  def raw_metrics_for_test(self, test1, test2):
     with self.db:
       res = self.db.execute(
         '''
@@ -70,7 +70,7 @@ class Analysis:
         np.int,
       )
 
-  def raw_ages_for_test_metric(self, test1: bool, test2: bool, metric: str):
+  def raw_ages_for_test_metric(self, test1, test2, metric):
     with self.db:
       res = self.db.execute(
         '''
@@ -86,7 +86,7 @@ class Analysis:
       )
       return np.array(list(res), np.int)
 
-  def raw_genders_for_test_metric(self, test1: bool, test2: bool, metric: str):
+  def raw_genders_for_test_metric(self, test1, test2, metric):
     with self.db:
       res = self.db.execute(
         '''
@@ -105,7 +105,7 @@ class Analysis:
         np.bool,
       )
 
-  def uid_counts_for_test_metric(self, test1: bool, test2: bool, metric: str):
+  def uid_counts_for_test_metric(self, test1, test2, metric):
     with self.db:
       res = self.db.execute(
         '''
@@ -120,7 +120,7 @@ class Analysis:
       )
       return np.array(list(res), np.int)
 
-  def uid_counts_for_test_gender_metric(self, test1: bool, test2: bool, gender: str, metric: str):
+  def uid_counts_for_test_gender_metric(self, test1, test2, gender, metric):
     with self.db:
       res = self.db.execute(
         '''
