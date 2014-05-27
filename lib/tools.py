@@ -78,5 +78,24 @@ class Analysis:
       )
       return np.array(list(res), np.int)
 
+  def raw_genders_by_test_metric(self, test1: bool, test2: bool, metric: str):
+    with self.db:
+      res = self.db.execute(
+        '''
+        select p.gender
+        from people as p
+        join exposures as e
+        on p.uid = e.uid
+        join conversions as c
+        on c.uid = p.uid
+        where e.test1 = ? and e.test2 = ? and c.metric = ?
+        ''',
+        (int(test1), int(test2), metric),
+      )
+      return np.array(
+        [r[0] == 'm' for r in res],
+        np.bool,
+      )
+
 if __name__ == '__main__':
   print('This file is not meant to be run directly.')
