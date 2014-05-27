@@ -48,7 +48,7 @@ class Simulator:
       self.db.execute('drop table if exists exposures')
       self.db.execute('create table exposures (ts timestamp, uid integer unique, test1 integer, test2 integer)')
       self.db.execute('drop table if exists conversions')
-      self.db.execute('create table conversions (ts timestamp, uid integer, conversion text)')
+      self.db.execute('create table conversions (ts timestamp, uid integer, metric text)')
       self.people = list(self.db.execute('select uid, age, gender from people'))
     assert NUM_PEOPLE == len(self.people)
     self.exposures = []

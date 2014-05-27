@@ -45,5 +45,12 @@ class Analysis:
       res = self.db.execute('select uid, count(*) from conversions group by uid')
       return np.array(list(res), np.int)
 
+  def raw_metrics_from_conversions(self):
+    with self.db:
+      return np.array(
+        [ord(res[0]) - ord('A') for res in self.db.execute('select metric from conversions')],
+        np.int
+      )
+
 if __name__ == '__main__':
   print('This file is not meant to be run directly.')
