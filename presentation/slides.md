@@ -1,24 +1,16 @@
-<!-- background: #f39b12 -->
-<!-- color: #fff -->
-<!-- font: frutiger -->
+<!-- background: #fff4e3-->
+<!-- color: #2d2422 -->
+<!-- font: univers -->
 
 <!-- Available online at: https://swipe.to/8881s -->
 
-# Hello World!
+# Quantitative Design
 
 * * *
 
-# Zahan Malkani
+### Zahan Malkani
 
-Growth Hacker @ Facebook
-
-Stanford: BS Physics 2012, MS Computer Science 2013
-
-* * *
-
-<!-- font: monaco -->
-
-    hello.world()
+Growth @ Facebook
 
 * * *
 
@@ -38,14 +30,12 @@ The dimensions to look at distributions include
 
 # Active Users
 
-Don't forget to see how how your population divides among __active__ users. Obviously, you need to define what __active__ means in your context.
+Don't forget to see how how your population divides among _active_ users. Obviously, you need to define what _active_ means in your context.
 
 - mean # of actions per person
 - Weekly active, monthly active
 
-## Simplification
-
-Made a big simplification assumption here. People are equally likely to return. In reality having cohorts who are more likely to return completely changes your test analysis.
+We made a big assumption here to simplify matters, that people are equally likely to return. In reality having cohorts who differ in their likelihood of returning complicates your test analysis.
 
 * * *
 
@@ -61,15 +51,15 @@ We will look at the following for people not currently in tests
 
 * * *
 
-## Metric A
+### Metric A
 
 Think of this as a 'status update' event. We care about it a bit.
 
-## Metric B
+### Metric B
 
 Think of this as a 'athletic activity' event. About as important to us as A.
 
-## Metric C
+### Metric C
 
 Think of this as a 'uploaded a photo' event. We care about it *a lot*.
 
@@ -77,12 +67,40 @@ Think of this as a 'uploaded a photo' event. We care about it *a lot*.
 
 # SQL
 
-This is important. You should understand the next few lines.
+You really should understand these next few lines. `SQL` is an indispensable tool in industry.
 
     select c.metric
     from conversions as c
     join exposures as e
     on c.uid = e.uid
     where e.test1 = 0 and e.test2 = 0
+
+* * *
+
+# Finally, the Tests
+
+We are running two tests on this unfortunate group of guinea pigs. We are going to examine the results for each, and their impact on the metrics that we care about.
+
+< Stacked bar charts for each metric >
+
+* * *
+
+### Test 1
+
+Let's say this is a big promotion for the Amgen Tour of California on the homepage.
+
+### Test 2
+
+Let's make the status update button bigger. We want more people to be sharing their thoughts.
+
+* * *
+
+# But wait, aren't we forgetting something?
+
+* * *
+
+# Confidence Intervals
+
+We need to know how confident we should be of these results.
 
 * * *
