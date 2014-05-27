@@ -10,7 +10,7 @@ NUM_PEOPLE = 100
 YOUNGEST_AGE = 10
 MID_LIFE = 20
 OLDEST_AGE = 30
-NUMBER_OF_HITS = 20
+NUMBER_OF_HITS = 100
 DATA_DIR = '../data'
 DB_FILE = 'site.db'
 
@@ -122,7 +122,7 @@ class People:
   def __init__(self, db: sqlite3.Connection):
     self.db = db
     with self.db:
-      self.db.execute('drop table people')
+      self.db.execute('drop table if exists people')
       self.db.execute('create table people (uid integer primary key, name text, age integer, gender text)')
 
   def filltable(self):

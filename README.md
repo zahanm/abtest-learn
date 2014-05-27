@@ -1,5 +1,14 @@
 # How to Analyse an A/B Test
 
+### Requirements
+
+This is all based on `python3` and `matplotlib`, accordingly
+
+    brew install python3
+    pip3 install matplotlib
+
+should have you all set.
+
 ## Generating the data
 
 We simulate server hits, and use the random module to pick which exposure and conversion events to log.
@@ -35,7 +44,7 @@ Each test has a specific effect on metrics, and we need to tease those effects a
 
 Let's say this is a big promotion for the Amgen Tour of California on the homepage. B is affected in a big way, since people are associating Facebook with sports.
 
-Let's say it increases metric B by 10% across the board. C gets a bump too, people uploading photos of themselves doing cool stuff, 1% for men. Unfortunately because all the featured pictures are of men, metric C takes a dip for women to the tune of 0.5%. Metric A is unaffected.
+Let's say it increases metric B by 10% across the board. C gets a bump too, people uploading photos of themselves doing cool stuff, 2% for men. Unfortunately because all the featured pictures are of men, metric C takes a dip for women to the tune of 1%. Metric A is unaffected.
 
 This test will be on for the first 20% of the UID space.
 
