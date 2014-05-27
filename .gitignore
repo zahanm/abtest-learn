@@ -1,5 +1,6 @@
 # globals
 *.pyc
+__pycache__/
 
 # mac specific
 .DS_Store
