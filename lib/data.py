@@ -10,7 +10,7 @@ NUM_PEOPLE = 100
 YOUNGEST_AGE = 10
 MID_LIFE = 20
 OLDEST_AGE = 30
-NUMBER_OF_HITS = 100
+NUMBER_OF_HITS = 1000
 DATA_DIR = '../data'
 DB_FILE = 'site.db'
 
@@ -36,7 +36,7 @@ class Simulator:
     self.people = []
     with self.db:
       self.db.execute('drop table if exists exposures')
-      self.db.execute('create table exposures (ts timestamp, uid integer, test1 integer, test2 integer)')
+      self.db.execute('create table exposures (ts timestamp, uid integer unique, test1 integer, test2 integer)')
       self.db.execute('drop table if exists conversions')
       self.db.execute('create table conversions (ts timestamp, uid integer, conversion text)')
       self.people = list(self.db.execute('select uid, age, gender from people'))
@@ -114,7 +114,8 @@ class Simulator:
 
   def flushlogs(self):
     with self.db:
-      self.db.executemany('insert into exposures values (?, ?, ?, ?)', self.exposures)
+      # ignores when there is a row with that UID already present
+      self.db.executemany('insert or ignore into exposures values (?, ?, ?, ?)', self.exposures)
       self.db.executemany('insert into conversions values (?, ?, ?)', self.conversions)
 
 class People:

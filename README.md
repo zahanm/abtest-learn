@@ -11,7 +11,7 @@ should have you all set.
 
 ## Generating the data
 
-We simulate server hits, and use the random module to pick which exposure and conversion events to log.
+We simulate server hits, and use the random module to pick which exposure and conversion events to log. For simplicity, there will be at most one exposure per UID in the set.
 
 ### Each Hit
 
@@ -58,7 +58,9 @@ This test is on for UIDs between 10% and 30% of the whole space (so that there i
 
 ## Analysis
 
-First, we have to figure out who actually saw each group treatment.
+Take a look at the demographics of the population. Age, gender distributions. How active they are, i.e. how often do they come take actions?
+
+We have to figure out who actually saw each group treatment.
 
 Number of conversion events per person, per exposure
 
@@ -69,3 +71,7 @@ Tests can have different effects on the different metrics that we care about, an
 Error bars, super crucial. How confident are we of the test results? Compare to the control conversion level.
 
 Ultimately, we want to make the decision, which tests should launch, and which should not.
+
+## Bonus Points
+
+- Age following a normal distribution, centered on 20
