@@ -1,4 +1,5 @@
 
+import argparse
 from datetime import datetime, timedelta
 import os.path
 from random import randint, choice, random
@@ -15,9 +16,13 @@ DATA_DIR = '../data'
 DB_FILE = 'site.db'
 
 def run():
+  parser = argparse.ArgumentParser(description='Generate the data-set.')
+  parser.add_argument('-p', '--people', action='store_true', help='Reset the people table as well.')
+  args = parser.parse_args()
   conn = sqlite3.connect(os.path.join(DATA_DIR, DB_FILE))
-  # p = People(conn)
-  # p.filltable()
+  if args.people:
+    p = People(conn)
+    p.filltable()
   s = Simulator(conn)
   for i in range(NUMBER_OF_HITS):
     s.serverhit()
@@ -66,12 +71,14 @@ class Simulator:
 
   def convert(self, test1: bool, test2: bool, age: int, gender: str):
     convs = []
-    if self.convert_a(test1, test2, age, gender):
-      convs.append('A')
-    if self.convert_b(test1, test2, age, gender):
-      convs.append('B')
-    if self.convert_c(test1, test2, age, gender):
-      convs.append('C')
+    ccs = [
+      (self.convert_a, 'A'),
+      (self.convert_b, 'B'),
+      (self.convert_c, 'C'),
+    ]
+    for fun, val in ccs:
+      if fun(test1, test2, age, gender):
+        convs.append(val)
     return convs
 
   def convert_a(self, test1: bool, test2: bool, age: int, gender: str):
