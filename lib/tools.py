@@ -120,5 +120,22 @@ class Analysis:
       )
       return np.array(list(res), np.int)
 
+  def uid_counts_for_test_gender_metric(self, test1: bool, test2: bool, gender: str, metric: str):
+    with self.db:
+      res = self.db.execute(
+        '''
+        select c.uid, count(*)
+        from conversions as c
+        join exposures as e
+        on c.uid = e.uid
+        join people as p
+        on p.uid = c.uid
+        where e.test1 = ? and e.test2 = ? and p.gender = ? and c.metric = ?
+        group by c.uid
+        ''',
+        (int(test1), int(test2), gender, metric),
+      )
+      return np.array(list(res), np.int)
+
 if __name__ == '__main__':
   print('This file is not meant to be run directly.')
