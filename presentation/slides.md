@@ -81,11 +81,6 @@ You really should understand these next few lines. `SQL` is an indispensable too
 
 We are running two tests on this unfortunate group of guinea pigs. We are going to examine the results for each, and their impact on the metrics that we care about.
 
-< Stacked bar charts for each metric > test1, test2
-
-< Stacked bar charts for gender > test1, test2
-we don't expect the tests to affect age groups differently
-
 * * *
 
 ### Test 1
@@ -95,6 +90,13 @@ Let's say this is a big promotion for the Amgen Tour of California on the homepa
 ### Test 2
 
 Let's make the status update button bigger. We want more people to be sharing their thoughts.
+
+* * *
+
+< Stacked bar charts for each metric > test1, test2
+
+< Stacked bar charts for gender > test1, test2
+we don't expect the tests to affect age groups differently
 
 * * *
 
