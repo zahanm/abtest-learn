@@ -53,7 +53,7 @@ class Analysis:
       res = self.db.execute('select uid, count(*) from conversions group by uid')
       return np.array(list(res), np.int)
 
-  def raw_metrics_by_test(self, test1: bool, test2: bool):
+  def raw_metrics_for_test(self, test1: bool, test2: bool):
     with self.db:
       res = self.db.execute(
         '''
@@ -67,10 +67,10 @@ class Analysis:
       )
       return np.array(
         [ord(r[0]) - ord('A') for r in res],
-        np.int
+        np.int,
       )
 
-  def raw_ages_by_test_metric(self, test1: bool, test2: bool, metric: str):
+  def raw_ages_for_test_metric(self, test1: bool, test2: bool, metric: str):
     with self.db:
       res = self.db.execute(
         '''
@@ -86,7 +86,7 @@ class Analysis:
       )
       return np.array(list(res), np.int)
 
-  def raw_genders_by_test_metric(self, test1: bool, test2: bool, metric: str):
+  def raw_genders_for_test_metric(self, test1: bool, test2: bool, metric: str):
     with self.db:
       res = self.db.execute(
         '''
@@ -104,6 +104,21 @@ class Analysis:
         [r[0] == 'm' for r in res],
         np.bool,
       )
+
+  def uid_counts_for_test_metric(self, test1: bool, test2: bool, metric: str):
+    with self.db:
+      res = self.db.execute(
+        '''
+        select c.uid, count(*)
+        from conversions as c
+        join exposures as e
+        on c.uid = e.uid
+        where e.test1 = ? and e.test2 = ? and c.metric = ?
+        group by c.uid
+        ''',
+        (int(test1), int(test2), metric),
+      )
+      return np.array(list(res), np.int)
 
 if __name__ == '__main__':
   print('This file is not meant to be run directly.')
