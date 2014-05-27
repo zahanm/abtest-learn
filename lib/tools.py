@@ -45,12 +45,38 @@ class Analysis:
       res = self.db.execute('select uid, count(*) from conversions group by uid')
       return np.array(list(res), np.int)
 
-  def raw_metrics_from_conversions(self):
+  def raw_metrics_by_test(self, test1: bool, test2: bool):
     with self.db:
+      res = self.db.execute(
+        '''
+        select c.metric
+        from conversions as c
+        join exposures as e
+        on c.uid = e.uid
+        where e.test1 = ? and e.test2 = ?
+        ''',
+        (int(test1), int(test2)),
+      )
       return np.array(
-        [ord(res[0]) - ord('A') for res in self.db.execute('select metric from conversions')],
+        [ord(r[0]) - ord('A') for r in res],
         np.int
       )
+
+  def raw_ages_by_test_metric(self, test1: bool, test2: bool, metric: str):
+    with self.db:
+      res = self.db.execute(
+        '''
+        select p.age
+        from people as p
+        join exposures as e
+        on p.uid = e.uid
+        join conversions as c
+        on c.uid = p.uid
+        where e.test1 = ? and e.test2 = ? and c.metric = ?
+        ''',
+        (int(test1), int(test2), metric),
+      )
+      return np.array(list(res), np.int)
 
 if __name__ == '__main__':
   print('This file is not meant to be run directly.')

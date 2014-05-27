@@ -74,3 +74,15 @@ Think of this as a 'athletic activity' event. About as important to us as A.
 Think of this as a 'uploaded a photo' event. We care about it *a lot*.
 
 * * *
+
+# SQL
+
+This is important. You should understand the next few lines.
+
+    select c.metric
+    from conversions as c
+    join exposures as e
+    on c.uid = e.uid
+    where e.test1 = 0 and e.test2 = 0
+
+* * *
