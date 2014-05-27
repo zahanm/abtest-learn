@@ -4,11 +4,11 @@
 
 <!-- Available online at: https://swipe.to/8881s -->
 
-# Quantitative Design
+# Quantitative Product Development
 
 * * *
 
-### Zahan Malkani
+## Zahan Malkani
 
 Growth @ Facebook
 
