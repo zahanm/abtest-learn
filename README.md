@@ -9,6 +9,10 @@ This is all based on `python3` and `matplotlib`, accordingly
 
 should have you all set.
 
+## Slides
+
+https://swipe.to/8881s
+
 ## Generating the data
 
 We simulate server hits, and use the random module to pick which exposure and conversion events to log. For simplicity, there will be at most one exposure per UID in the set.

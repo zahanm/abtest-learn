@@ -14,6 +14,10 @@ Growth @ Facebook
 
 * * *
 
+# [github.com/zahanm/abtest-learn](https://github.com/zahanm/abtest-learn)
+
+* * *
+
 # Demographics
 
 Let's start with a look at the demographics of this set of people.
@@ -28,6 +32,10 @@ The dimensions to look at distributions include
 
 * * *
 
+# ... Analysis ...
+
+* * *
+
 # Active Users
 
 Don't forget to see how how your population divides among _active_ users. Obviously, you need to define what _active_ means in your context.
@@ -36,6 +44,10 @@ Don't forget to see how how your population divides among _active_ users. Obviou
 - Weekly active, monthly active
 
 We made a big assumption here to simplify matters, that people are equally likely to return. In reality having cohorts who differ in their likelihood of returning complicates your test analysis.
+
+* * *
+
+# ... Analysis ...
 
 * * *
 
@@ -77,6 +89,10 @@ You really should understand these next few lines. `SQL` is an indispensable too
 
 * * *
 
+# ... Analysis ...
+
+* * *
+
 # Finally, the Tests
 
 We are running two tests on this unfortunate group of guinea pigs. We are going to examine the results for each, and their impact on the metrics that we care about.
@@ -85,7 +101,7 @@ We are running two tests on this unfortunate group of guinea pigs. We are going 
 
 ### Test 1
 
-Let's say this is a big promotion for the Amgen Tour of California on the homepage.
+Let's say this is a big promotion for the _Amgen Tour of California_ on the homepage.
 
 ### Test 2
 
@@ -93,10 +109,7 @@ Let's make the status update button bigger. We want more people to be sharing th
 
 * * *
 
-< Stacked bar charts for each metric > test1, test2
-
-< Stacked bar charts for gender > test1, test2
-we don't expect the tests to affect age groups differently
+# ... Analysis ...
 
 * * *
 
@@ -116,6 +129,6 @@ What happens when you look at people in both tests? It all goes to pieces.
 
 * * *
 
-# [github.com/zahanm/abtest-learn](https://github.com/zahanm/abtest-learn)
+# Thanks!
 
 * * *
