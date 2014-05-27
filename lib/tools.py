@@ -23,6 +23,14 @@ class Analysis:
       res = self.db.execute('select count(*) from conversions').fetchone()
       return res[0]
 
+  def raw_names_ages_gender(self, limit: int):
+    with self.db:
+      res = self.db.execute(
+        'select name, age, gender from people limit ?',
+        (limit, ),
+      )
+      return list(res)
+
   def raw_ages(self):
     with self.db:
       res = self.db.execute('select age from people')
