@@ -75,3 +75,4 @@ Ultimately, we want to make the decision, which tests should launch, and which s
 ## Bonus Points
 
 - Age following a normal distribution, centered on 20
+- Big simplification to have everyone be equally active
