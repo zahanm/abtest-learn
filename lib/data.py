@@ -18,16 +18,20 @@ DB_FILE = 'site.db'
 
 def run():
   parser = argparse.ArgumentParser(description='Generate the data-set.')
-  parser.add_argument('-p', '--people', action='store_true', help='Reset the people table as well.')
+  parser.add_argument('-p', '--people', action='store_true', help='Reset the people table.')
+  parser.add_argument('-s', '--simulate', action='store_true', help='Run the web-service simulation.')
   args = parser.parse_args()
   conn = sqlite3.connect(os.path.join(DATA_DIR, DB_FILE))
   if args.people:
     p = People(conn)
     p.filltable()
-  s = Simulator(conn)
-  for i in range(NUMBER_OF_HITS):
-    s.serverhit()
-  s.flushlogs()
+  if args.simulate:
+    s = Simulator(conn)
+    for i in range(NUMBER_OF_HITS):
+      s.serverhit()
+    s.flushlogs()
+  if not args.people and not args.simulate:
+    parser.print_help()
 
 class Simulator:
   """
