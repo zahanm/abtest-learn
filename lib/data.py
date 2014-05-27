@@ -5,6 +5,7 @@ import os.path
 from random import randint, choice, random
 import sqlite3
 
+# local
 import names
 
 NUM_PEOPLE = 100
