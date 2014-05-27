@@ -29,8 +29,6 @@ Let's start with a look at the demographics of this set of people.
     # if only this would work
     select * from people;
 
-It works for a toy dataset though.
-
 The dimensions to look at distributions include
 
 - age
