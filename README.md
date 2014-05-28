@@ -11,7 +11,8 @@ should have you all set.
 
 ## Slides
 
-https://swipe.to/8881s
+- The slides are at: https://swipe.to/8881s
+- IPython's [notebook viewer](http://nbviewer.ipython.org/github/zahanm/abtest-learn/blob/master/lib/analysis.ipynb) will show the notebook from `lib/analysis.ipynb`
 
 ## Generating the data
 
