@@ -14,10 +14,6 @@ Growth @ Facebook
 
 * * *
 
-# [github.com/zahanm/abtest-learn](https://github.com/zahanm/abtest-learn)
-
-* * *
-
 # Demographics
 
 Let's start with a look at the demographics of this set of people.
@@ -129,6 +125,6 @@ What happens when you look at people in both tests? It all goes to pieces.
 
 * * *
 
-# Thanks!
+# [github.com/zahanm/abtest-learn](https://github.com/zahanm/abtest-learn)
 
 * * *
