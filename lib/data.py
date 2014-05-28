@@ -8,7 +8,7 @@ import sqlite3
 # local
 import names
 
-NUM_PEOPLE = 100
+NUM_PEOPLE = 1000
 YOUNGEST_AGE = 10
 MID_LIFE = 20
 OLDEST_AGE = 30
