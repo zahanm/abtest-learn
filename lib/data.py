@@ -38,7 +38,7 @@ class Simulator:
   Simulates a webservice receiving requests and logging each one
   """
 
-  def __init__(self, db):
+  def __init__(self, db: sqlite3.Connection):
     # initialize this service 5 days ago
     self.current_time = datetime.now() - timedelta(days=5)
     self.db = db
@@ -67,14 +67,14 @@ class Simulator:
     for conv in convs:
       self.conversions.append((self.current_time, uid, conv))
 
-  def expose(self, uid):
+  def expose(self, uid: int) -> (bool, bool):
     # usually we'd calculate a hash ID for the group mapping, but in this toy example, UID - 1 gives a number in [0, 99)
     hash_key = uid - 1
     test1 = hash_key < 20
     test2 = 10 <= hash_key and hash_key < 30
     return test1, test2
 
-  def convert(self, test1, test2, age, gender):
+  def convert(self, test1: bool, test2: bool, age: int, gender: str):
     convs = []
     ccs = [
       (self.convert_a, 'A'),
@@ -86,7 +86,7 @@ class Simulator:
         convs.append(val)
     return convs
 
-  def convert_a(self, test1, test2, age, gender):
+  def convert_a(self, test1: bool, test2: bool, age: int, gender: str):
     pA = 0.3
     testdelta = 0
     if test2:
@@ -94,7 +94,7 @@ class Simulator:
     pA += testdelta
     return random() < pA
 
-  def convert_b(self, test1, test2, age, gender):
+  def convert_b(self, test1: bool, test2: bool, age: int, gender: str):
     testdelta = 0
     if age < MID_LIFE:
       if gender == 'm':
@@ -111,7 +111,7 @@ class Simulator:
     pB += testdelta
     return random() < pB
 
-  def convert_c(self, test1, test2, age, gender):
+  def convert_c(self, test1: bool, test2: bool, age: int, gender: str):
     pC = 0.05
     testdelta = 0
     if test1:
@@ -132,7 +132,7 @@ class Simulator:
 
 class People:
 
-  def __init__(self, db):
+  def __init__(self, db: sqlite3.Connection):
     self.db = db
     with self.db:
       self.db.execute('drop table if exists people')

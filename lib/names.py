@@ -36,27 +36,27 @@ LAST_NAMES = [
   'Jones',
   'Miller',
   'Davis',
-  'Garcia',
-  'Rodriguez',
+  'García',
+  'Rodríguez',
   'Wilson',
-  'Martinez',
+  'Martínez',
   'Anderson',
   'Taylor',
   'Thomas',
-  'Hernandez',
+  'Hernández',
   'Moore',
   'Martin',
   'Jackson',
   'Thompson',
   'White',
-  'Lopez',
+  'López',
   'Lee',
-  'Gonzalez',
+  'González',
   'Harris',
   'Clark',
 ]
 
-def makeupone(gender):
+def makeupone(gender: str) -> str:
   assert gender in FIRST_NAMES.keys()
   return choice(FIRST_NAMES[gender]) + ' ' + choice(LAST_NAMES)
 
