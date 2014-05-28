@@ -70,8 +70,11 @@ class Simulator:
   def expose(self, uid: int) -> (bool, bool):
     # usually we'd calculate a hash ID for the group mapping, but in this toy example, UID - 1 gives a number in [0, 99)
     hash_key = uid - 1
-    test1 = hash_key < 20
-    test2 = 10 <= hash_key and hash_key < 30
+    upper = 0.2 * NUM_PEOPLE
+    test1 = hash_key < upper
+    lower = 0.1 * NUM_PEOPLE
+    upper = 0.3 * NUM_PEOPLE
+    test2 = lower <= hash_key and hash_key < upper
     return test1, test2
 
   def convert(self, test1: bool, test2: bool, age: int, gender: str):
