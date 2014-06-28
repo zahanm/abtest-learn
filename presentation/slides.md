@@ -28,7 +28,7 @@ The dimensions to look at distributions include
 
 * * *
 
-# ... Analysis ...
+# ... [Analysis](http://nbviewer.ipython.org/github/zahanm/abtest-learn/blob/master/lib/analysis.ipynb) ...
 
 * * *
 
@@ -43,7 +43,7 @@ We made a big assumption here to simplify matters, that people are equally likel
 
 * * *
 
-# ... Analysis ...
+# ... [Analysis](http://nbviewer.ipython.org/github/zahanm/abtest-learn/blob/master/lib/analysis.ipynb) ...
 
 * * *
 
@@ -85,7 +85,7 @@ You really should understand these next few lines. `SQL` is an indispensable too
 
 * * *
 
-# ... Analysis ...
+# ... [Analysis](http://nbviewer.ipython.org/github/zahanm/abtest-learn/blob/master/lib/analysis.ipynb) ...
 
 * * *
 
@@ -105,7 +105,7 @@ Let's make the status update button bigger. We want more people to be sharing th
 
 * * *
 
-# ... Analysis ...
+# ... [Analysis](http://nbviewer.ipython.org/github/zahanm/abtest-learn/blob/master/lib/analysis.ipynb) ...
 
 * * *
 
